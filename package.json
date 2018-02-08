@@ -1,0 +1,22 @@
+{
+  "name": "primo-explore-search-bar-sub-menu",
+  "version": "1.0.0",
+  "description": "Add a nav bar underneath the search bar to provide additional links in the primo-explore UI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyulibraries/primo-explore-search-bar-sub-menu.git"
+  },
+  "keywords": [
+    "primo-explore"
+  ],
+  "author": "Barnaby Alter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nyulibraries/primo-explore-search-bar-sub-menu/issues"
+  },
+  "homepage": "https://github.com/nyulibraries/primo-explore-search-bar-sub-menu#readme"
+}

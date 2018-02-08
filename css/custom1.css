@@ -1,0 +1,29 @@
+prm-search-bar {
+  padding-bottom: 58.5px;
+}
+.__sm prm-search-bar {
+  padding-bottom: 49.5px;
+}
+.__xs prm-search-bar {
+  padding-bottom: 36px;
+}
+search-bar-sub-menu ul {
+  margin: 0;
+}
+search-bar-sub-menu ul li {
+  display: inline;
+  list-style: none;
+  padding: 0;
+}
+search-bar-sub-menu div.search-bar-sub-menu {
+  background-color: #ccd0d5;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 36px;
+}
+search-bar-sub-menu .md-button.md-small {
+  font-size: .75em;
+  min-width: 42px;
+}

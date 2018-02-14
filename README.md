@@ -1,5 +1,6 @@
 # primo-explore-search-bar-sub-menu
 
+[![Build Status](https://travis-ci.org/NYULibraries/primo-explore-search-bar-sub-menu.svg?branch=master)](https://travis-ci.org/NYULibraries/primo-explore-search-bar-sub-menu)
 [![npm version](https://img.shields.io/npm/v/primo-explore-search-bar-sub-menu.svg)](https://www.npmjs.com/package/primo-explore-search-bar-sub-menu)
 
 ## Description
@@ -127,7 +128,7 @@ app.constant('searchBarSubMenuItems',
 
 ## Tests
 
-We are using Yarn to manage dev dependencies. 
+We are using Yarn to manage dev dependencies.
 
 ```
 yarn

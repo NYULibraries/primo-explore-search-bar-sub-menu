@@ -1,5 +1,7 @@
 # primo-explore-search-bar-sub-menu
 
+[![npm version](https://img.shields.io/npm/v/primo-explore-search-bar-sub-menu.svg)](https://www.npmjs.com/package/primo-explore-search-bar-sub-menu)
+
 ## Description
 
 Add a nav bar underneath the search bar to provide additional links in the primo-explore UI.
@@ -22,6 +24,8 @@ Add a nav bar underneath the search bar to provide additional links in the primo
     ```
 4. Install this package:
     ```
+    yarn add primo-explore-search-bar-sub-menu --dev
+    # OR
     npm install primo-explore-search-bar-sub-menu --save-dev
     ```
 
@@ -84,7 +88,7 @@ prm-search-bar {
   padding-bottom: 49.5px;
 }
 .__xs prm-search-bar {
-  padding-bottom: 36pxs;
+  padding-bottom: 36px;
 }
 ```
 
@@ -119,4 +123,13 @@ app.constant('searchBarSubMenuItems',
   ]
 );
 
+```
+
+## Tests
+
+We are using Yarn to manage dev dependencies. 
+
+```
+yarn
+yarn test
 ```

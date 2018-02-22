@@ -1,3 +1,9 @@
+/*
+  The reason these are such specific pixels is that they were chosen
+  to space correctly around the existing search bar
+  Of course if the size of the existing search bar is different of if ExL
+  changes it these base values will be meaningless
+*/
 prm-search-bar {
   padding-bottom: 58.5px;
 }
@@ -16,7 +22,7 @@ search-bar-sub-menu ul li {
   padding: 0;
 }
 search-bar-sub-menu div.search-bar-sub-menu {
-  background-color: #ccd0d5;
+  background-color: #CCD0D5;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -26,4 +32,5 @@ search-bar-sub-menu div.search-bar-sub-menu {
 search-bar-sub-menu .md-button.md-small {
   font-size: .75em;
   min-width: 42px;
+  font-weight: bold;
 }

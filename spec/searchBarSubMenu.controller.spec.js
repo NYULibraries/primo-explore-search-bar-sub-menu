@@ -68,8 +68,9 @@ describe('searchBarSubMenuController', () => {
 
   describe('goToUrl', () => {
     it('should open the given url in a new window', () => {
-      $scope.goToUrl('http://example.com');
-      expect(window.open).toHaveBeenCalled();
+      const url = 'http://example.com';
+      $scope.goToUrl(url);
+      expect(window.open).toHaveBeenCalledWith(url, '_blank');
     });
   });
 

@@ -30,7 +30,7 @@ describe('searchBarSubMenuController', () => {
 
   beforeEach(module('searchBarSubMenu', ($provide) => {
     $provide.constant("searchBarSubMenuItems", searchBarSubMenuItems);
-    $provide.value("translateFilter", () => "foo" );
+    $provide.value("translateFilter", (original) => original + "!");
   }));
 
   beforeEach(inject(function(_$controller_, _$rootScope_, _$filter_) {
@@ -60,7 +60,7 @@ describe('searchBarSubMenuController', () => {
     });
     it('should translate text within curly braces', () => {
       inject(function($filter) {
-        expect($scope.translate('My {CONFIG_VALUE} value')).toEqual("My foo value");
+        expect($scope.translate('My {CONFIG_VALUE} value')).toEqual("My CONFIG_VALUE! value");
       });
     });
   });
@@ -68,8 +68,9 @@ describe('searchBarSubMenuController', () => {
 
   describe('goToUrl', () => {
     it('should open the given url in a new window', () => {
-      $scope.goToUrl('http://example.com');
-      expect(window.open).toHaveBeenCalled();
+      const url = 'http://example.com';
+      $scope.goToUrl(url);
+      expect(window.open).toHaveBeenCalledWith(url, '_blank');
     });
   });
 

@@ -29,6 +29,7 @@
     "karma-spec-reporter": "^0.0.32"
   },
   "scripts": {
-    "test": "karma start --single-run"
+    "test": "karma start --single-run",
+    "test:chrome-debugger": "karma start --browsers=Chrome --single-run=false --debug"
   }
 }

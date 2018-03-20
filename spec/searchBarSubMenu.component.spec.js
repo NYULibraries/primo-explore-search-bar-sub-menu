@@ -83,7 +83,7 @@ describe('searchBarSubMenu component', () => {
     it('should map CSS classes', () => {
       Array.from(buttons).forEach((button, idx) => {
         const classes = button.className;
-        expect(classes).toContain(searchBarSubMenuItems[i].cssClasses);
+        expect(classes).toContain(searchBarSubMenuItems[idx].cssClasses);
       });
     });
 
@@ -93,9 +93,9 @@ describe('searchBarSubMenu component', () => {
         const iconSet = iconEl.getAttribute('svg-icon-set');
         const iconDef = iconEl.getAttribute('icon-definition');
 
-        expect(iconSet).toEqual(searchBarSubMenuItems[i].icon.set);
-        expect(iconDef).toEqual(searchBarSubMenuItems[i].icon.icon);
+        expect(iconSet).toEqual(searchBarSubMenuItems[idx].icon.set);
+        expect(iconDef).toEqual(searchBarSubMenuItems[idx].icon.icon);
       });
     });
-
+  });
 });

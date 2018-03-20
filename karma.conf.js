@@ -6,6 +6,7 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'node_modules/@babel/polyfill/dist/polyfill.js',
       'js/**/*.js',
       'spec/**/*.spec.js'
     ],

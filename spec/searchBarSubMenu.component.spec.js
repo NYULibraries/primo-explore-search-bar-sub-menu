@@ -66,47 +66,36 @@ describe('searchBarSubMenu component', () => {
     });
 
     it('should include name and description', () => {
-      for(let i = 0; i < buttons.length; i++) {
-        const button = buttons[i];
-        expect(button.innerText).toContain(searchBarSubMenuItems[i].name);
-        expect(button.innerText).toContain(searchBarSubMenuItems[i].description);
-      }
+      // Add nodelist-foreach-polyfill? https://www.npmjs.com/package/nodelist-foreach-polyfill
+      Array.from(buttons).forEach((button, idx) => {
+        expect(button.innerText).toContain(searchBarSubMenuItems[idx].name);
+        expect(button.innerText).toContain(searchBarSubMenuItems[idx].description);
+      });
     });
 
     it('should link to action property', () => {
-      for(let i = 0; i < buttons.length; i++) {
-        const button = buttons[i];
+      Array.from(buttons).forEach((button, idx) => {
         const href = button.getAttribute('data-href');
-        expect(href).toEqual(searchBarSubMenuItems[i].action);
-      }
-
-      // Add nodelist-foreach-polyfill? https://www.npmjs.com/package/nodelist-foreach-polyfill
-      // buttons.forEach((button, idx) => {
-      //   const href = button.getAttribute('data-href');
-      //   expect(href).toEqual(searchBarSubMenuItems[idx].action);
-      // });
+        expect(href).toEqual(searchBarSubMenuItems[idx].action);
+      });
     });
 
     it('should map CSS classes', () => {
-      for(let i = 0; i < buttons.length; i++) {
-        const button = buttons[i];
+      Array.from(buttons).forEach((button, idx) => {
         const classes = button.className;
         expect(classes).toContain(searchBarSubMenuItems[i].cssClasses);
-      }
+      });
     });
 
     it('should contain primo icons with mapped attributes', () => {
-      for(let i = 0; i < buttons.length; i++) {
-        const button = buttons[i];
+      Array.from(buttons).forEach((button, idx) => {
         const iconEl = button.querySelector('prm-icon');
         const iconSet = iconEl.getAttribute('svg-icon-set');
         const iconDef = iconEl.getAttribute('icon-definition');
 
         expect(iconSet).toEqual(searchBarSubMenuItems[i].icon.set);
         expect(iconDef).toEqual(searchBarSubMenuItems[i].icon.icon);
-      }
+      });
     });
-  });
-
 
 });

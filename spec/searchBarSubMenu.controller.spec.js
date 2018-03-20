@@ -38,7 +38,7 @@ describe('searchBarSubMenuController', () => {
     $scope = _$rootScope_;
     $filter = _$filter_;
 
-    controller = $controller('searchBarSubMenuController', { $scope: $scope });
+    controller = $controller('searchBarSubMenuController', { $scope });
   }));
 
   beforeEach(() => {

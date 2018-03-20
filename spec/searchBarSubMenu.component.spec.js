@@ -23,7 +23,7 @@ let searchBarSubMenuItems = [
   }
 ];
 
-describe('template', () => {
+describe('searchBarSubMenu component', () => {
   beforeEach(module('searchBarSubMenu', ($provide) => {
     $provide.constant("searchBarSubMenuItems", searchBarSubMenuItems);
     $provide.value("translateFilter", (original) => original + "!");
@@ -34,16 +34,19 @@ describe('template', () => {
     $compile = _$compile_;
     $rootScope = _$rootScope_;
     element = $compile("<search-bar-sub-menu></search-bar-sub-menu>")($rootScope);
+    // element is a jqlite object
     $rootScope.$digest();
   }));
 
-  describe('general template properties', () => {
+  describe('template layout', () => {
 
-    it('should contain a single div element at the top-level', () => {
+    it('should have styled div element at the top-level', () => {
       const children = element.children();
-      expect(children[0].tagName).toEqual("DIV");
-      expect(children.length).toEqual(1);
+      const div = children[0];
 
+      expect(div.tagName).toEqual('DIV');
+      expect(children.length).toEqual(1);
+      expect(div.className).toContain('search-bar-sub-menu');
     });
 
     it('should contain a single unordered list', () => {
@@ -52,31 +55,58 @@ describe('template', () => {
     });
   });
 
-  describe('submenu list', () => {
-    let ul;
+  describe('submenu buttons', () => {
+    let buttons;
     beforeEach(() => {
-      ul = element.find('ul')[0];
+      buttons = element.find('ul')[0].querySelectorAll('button');
     });
 
-    it ('should have proper number of list items', () => {
-      expect(ul.childElementCount).toEqual(searchBarSubMenuItems.length);
+    it('should be appropriate amount', () => {
+      expect(buttons.length).toEqual(searchBarSubMenuItems.length);
     });
 
-    it('should have button with link to action property', () => {
-      const lis = ul.children;
-      for(let i = 0; i < lis.length; i++) {
-        const li = lis[i];
-        const href = li.querySelector('button').getAttribute('data-href');
+    it('should include name and description', () => {
+      for(let i = 0; i < buttons.length; i++) {
+        const button = buttons[i];
+        expect(button.innerText).toContain(searchBarSubMenuItems[i].name);
+        expect(button.innerText).toContain(searchBarSubMenuItems[i].description);
+      }
+    });
+
+    it('should link to action property', () => {
+      for(let i = 0; i < buttons.length; i++) {
+        const button = buttons[i];
+        const href = button.getAttribute('data-href');
         expect(href).toEqual(searchBarSubMenuItems[i].action);
       }
 
-      // Babel polyfill Array.from in ES2015?
-      // Array.from(ul.children).forEach((li, idx) => {
-      //   const href = li.querySelector('button').getAttribute('data-href');
+      // Add nodelist-foreach-polyfill? https://www.npmjs.com/package/nodelist-foreach-polyfill
+      // buttons.forEach((button, idx) => {
+      //   const href = button.getAttribute('data-href');
       //   expect(href).toEqual(searchBarSubMenuItems[idx].action);
       // });
     });
 
+    it('should map CSS classes', () => {
+      for(let i = 0; i < buttons.length; i++) {
+        const button = buttons[i];
+        const classes = button.className;
+        expect(classes).toContain(searchBarSubMenuItems[i].cssClasses);
+      }
+    });
+
+    it('should contain primo icons with mapped attributes', () => {
+      for(let i = 0; i < buttons.length; i++) {
+        const button = buttons[i];
+        const iconEl = button.querySelector('prm-icon');
+        const iconSet = iconEl.getAttribute('svg-icon-set');
+        const iconDef = iconEl.getAttribute('icon-definition');
+
+        expect(iconSet).toEqual(searchBarSubMenuItems[i].icon.set);
+        expect(iconDef).toEqual(searchBarSubMenuItems[i].icon.icon);
+      }
+    });
   });
+
 
 });

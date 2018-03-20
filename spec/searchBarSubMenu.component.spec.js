@@ -1,27 +1,4 @@
-let viewName = "TEST";
-let searchBarSubMenuItems = [
-  {
-    name: "Back to Primo Classic",
-    description: "Back to Primo Classic",
-    action: "http://primo.school.edu/primo_library/libweb/action/search.do?vid=" + viewName,
-    icon: {
-      set: 'navigation',
-      icon: 'ic_arrow_back_24px'
-    },
-    show_xs: true,
-    cssClasses: 'button-over-dark'
-  },
-  {
-    name: "Library Hours",
-    description: "Library Hours",
-    action: "https://school.edu/library-hours",
-    icon: {
-      set: 'av',
-      icon: 'ic_av_timer_24px'
-    },
-    cssClasses: 'button-over-dark'
-  }
-];
+const searchBarSubMenuItems = __fixtures__['searchBarSubMenuItems'];
 
 describe('searchBarSubMenu component', () => {
   beforeEach(module('searchBarSubMenu', ($provide) => {

@@ -2,20 +2,18 @@ const searchBarSubMenuItems = __fixtures__['searchBarSubMenuItems'];
 
 describe('searchBarSubMenuController', () => {
 
-  let $controller, $scope, $filter;
-  let controller;
+  let $componentController, controller, $scope;
 
   beforeEach(module('searchBarSubMenu', ($provide) => {
     $provide.constant("searchBarSubMenuItems", searchBarSubMenuItems);
     $provide.value("translateFilter", (original) => original + "!");
   }));
 
-  beforeEach(inject(function(_$controller_, _$rootScope_, _$filter_) {
-    $controller = _$controller_;
+  beforeEach(inject(function(_$rootScope_, _$componentController_) {
     $scope = _$rootScope_;
-    $filter = _$filter_;
+    $componentController = _$componentController_;
 
-    controller = $controller('searchBarSubMenuController', { $scope });
+    controller = $componentController('searchBarSubMenu', { $scope });
   }));
 
   beforeEach(() => {

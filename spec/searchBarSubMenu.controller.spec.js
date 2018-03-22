@@ -25,6 +25,10 @@ describe('searchBarSubMenuController', () => {
   describe('$onInit', () => {
     it('should set items array in scope', () => {
       controller.$onInit();
+      const scopeAssignments = Object.keys($scope)
+                          .filter(k => k[0] !== '$')
+                          .map(k => $scope[k]);
+
       expect($scope.items).toEqual(searchBarSubMenuItems);
     });
   });

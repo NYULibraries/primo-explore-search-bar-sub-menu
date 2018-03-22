@@ -2,16 +2,18 @@ const searchBarSubMenuItems = __fixtures__['searchBarSubMenuItems'];
 
 describe('searchBarSubMenuController', () => {
 
-  let $componentController, controller, $scope;
+  let $componentController, $scope, $filter;
+  let controller;
 
   beforeEach(module('searchBarSubMenu', ($provide) => {
     $provide.constant("searchBarSubMenuItems", searchBarSubMenuItems);
     $provide.value("translateFilter", (original) => original + "!");
   }));
 
-  beforeEach(inject(function(_$rootScope_, _$componentController_) {
+  beforeEach(inject(function(_$rootScope_, _$componentController_, _$filter_) {
     $scope = _$rootScope_;
     $componentController = _$componentController_;
+    $filter = _$filter_;
 
     controller = $componentController('searchBarSubMenu', { $scope });
   }));
@@ -29,14 +31,10 @@ describe('searchBarSubMenuController', () => {
 
   describe('translate', () => {
     it('should pass through text not in curly braces', () => {
-      inject(function($filter) {
-        expect($scope.translate('My Value')).toEqual("My Value");
-      });
+      expect($scope.translate('My Value')).toEqual("My Value");
     });
     it('should translate text within curly braces', () => {
-      inject(function($filter) {
-        expect($scope.translate('My {CONFIG_VALUE} value')).toEqual("My CONFIG_VALUE! value");
-      });
+      expect($scope.translate('My {CONFIG_VALUE} value')).toEqual("My CONFIG_VALUE! value");
     });
   });
 

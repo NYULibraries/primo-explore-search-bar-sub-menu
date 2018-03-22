@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nyulibraries/primo-explore-search-bar-sub-menu#readme",
   "devDependencies": {
+    "@babel/polyfill": "^7.0.0-beta.42",
     "angular": "^1.6.9",
     "angular-mocks": "^1.6.9",
     "babel-core": "^6.26.0",
@@ -24,11 +25,14 @@
     "jasmine-core": "^2.99.1",
     "karma": "^2.0.0",
     "karma-babel-preprocessor": "^7.0.0",
+    "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.1",
+    "karma-json-fixtures-preprocessor": "^0.0.6",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-spec-reporter": "^0.0.32"
   },
   "scripts": {
-    "test": "karma start --single-run"
+    "test": "karma start --single-run",
+    "test:chrome-debugger": "karma start --browsers=Chrome --single-run=false --debug"
   }
 }

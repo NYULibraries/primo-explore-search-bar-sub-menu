@@ -10,9 +10,11 @@ describe('searchBarSubMenu component', () => {
   beforeEach(inject(function(_$compile_, _$rootScope_){
     $compile = _$compile_;
     $rootScope = _$rootScope_;
-    element = $compile("<search-bar-sub-menu></search-bar-sub-menu>")($rootScope);
+
+    const scope = $rootScope.$new();
+    element = $compile("<search-bar-sub-menu />")(scope);
     // element is a jqlite object
-    $rootScope.$digest();
+    scope.$digest();
   }));
 
   describe('template layout', () => {

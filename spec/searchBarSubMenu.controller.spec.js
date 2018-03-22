@@ -29,7 +29,7 @@ describe('searchBarSubMenuController', () => {
                           .filter(k => k[0] !== '$')
                           .map(k => $scope[k]);
 
-      expect($scope.items).toEqual(searchBarSubMenuItems);
+      expect(scopeAssignments).toContain(searchBarSubMenuItems);
     });
   });
 

@@ -3,7 +3,7 @@ const searchBarSubMenuItems = __fixtures__['searchBarSubMenuItems'];
 describe('searchBarSubMenu component', () => {
   beforeEach(module('searchBarSubMenu', ($provide) => {
     $provide.constant("searchBarSubMenuItems", searchBarSubMenuItems);
-    $provide.value("translateFilter", (original) => original + "!");
+    $provide.value("translateFilter", (original) => original);
   }));
 
   let $compile, $rootScope, element;
@@ -55,7 +55,7 @@ describe('searchBarSubMenu component', () => {
     it('should link to action property', () => {
       Array.from(buttons).forEach((button, idx) => {
         const href = button.getAttribute('data-href');
-        expect(href).toEqual(searchBarSubMenuItems[idx].action);
+        expect(searchBarSubMenuItems[idx].action).toContain(href);
       });
     });
 

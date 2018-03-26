@@ -13,7 +13,7 @@
   {
     "name": "Library Hours",
     "description": "Library Hours",
-    "action": "https://school.edu/library-hours",
+    "action": "{nyu.library.hours}",
     "icon": {
       "set": "av",
       "icon": "ic_av_timer_24px"

@@ -3,16 +3,18 @@ const searchBarSubMenuItems = __fixtures__['searchBarSubMenuItems'];
 describe('searchBarSubMenu component', () => {
   beforeEach(module('searchBarSubMenu', ($provide) => {
     $provide.constant("searchBarSubMenuItems", searchBarSubMenuItems);
-    $provide.value("translateFilter", (original) => original + "!");
+    $provide.value("translateFilter", (original) => original);
   }));
 
   let $compile, $rootScope, element;
   beforeEach(inject(function(_$compile_, _$rootScope_){
     $compile = _$compile_;
     $rootScope = _$rootScope_;
-    element = $compile("<search-bar-sub-menu></search-bar-sub-menu>")($rootScope);
+
+    const scope = $rootScope.$new();
+    element = $compile("<search-bar-sub-menu />")(scope);
     // element is a jqlite object
-    $rootScope.$digest();
+    scope.$digest();
   }));
 
   describe('template layout', () => {
@@ -53,7 +55,7 @@ describe('searchBarSubMenu component', () => {
     it('should link to action property', () => {
       Array.from(buttons).forEach((button, idx) => {
         const href = button.getAttribute('data-href');
-        expect(href).toEqual(searchBarSubMenuItems[idx].action);
+        expect(searchBarSubMenuItems[idx].action).toContain(href);
       });
     });
 

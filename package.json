@@ -20,6 +20,7 @@
     "@babel/polyfill": "^7.0.0-beta.42",
     "angular": "^1.6.9",
     "angular-mocks": "^1.6.9",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-transform-html-import-to-string": "^0.0.1",
@@ -38,6 +39,10 @@
   },
   "scripts": {
     "test": "karma start --single-run",
-    "test:chrome-debugger": "karma start --browsers=Chrome --single-run=false --debug"
+    "test:chrome-debugger": "karma start --browsers=Chrome --single-run=false --debug",
+    "copy-css": "cp -r src/css/ dist/css/",
+    "babelify": "yarn babel src --out-dir dist --ignore *.spec.js,coverage",
+    "build": "yarn babelify; yarn copy-css",
+    "prepare": "BABEL_ENV=production yarn build"
   }
 }

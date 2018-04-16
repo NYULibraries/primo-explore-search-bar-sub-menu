@@ -1,5 +1,4 @@
-coverage/
-spec/
+src/
 .babelrc
 .eslintrc
 .travis.yml

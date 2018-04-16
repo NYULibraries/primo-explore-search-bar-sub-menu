@@ -1,8 +1,14 @@
 {
   "presets": ["es2015"],
+  "sourceMaps": "both",
   "plugins": [
-    "transform-html-import-to-string",
-    "istanbul"
+    "babel-plugin-transform-html-import-to-string"
   ],
-  "sourceMaps": "both"
+  "env": {
+    "development": {
+      "plugins": [
+        "istanbul"
+      ]
+    },
+  }
 }

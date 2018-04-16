@@ -45,7 +45,6 @@ describe('searchBarSubMenu component', () => {
     });
 
     it('should include name and description', () => {
-      // Add nodelist-foreach-polyfill? https://www.npmjs.com/package/nodelist-foreach-polyfill
       Array.from(buttons).forEach((button, idx) => {
         expect(button.innerText).toContain(searchBarSubMenuItems[idx].name);
         expect(button.innerText).toContain(searchBarSubMenuItems[idx].description);

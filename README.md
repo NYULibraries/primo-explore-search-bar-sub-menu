@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/NYULibraries/primo-explore-search-bar-sub-menu.svg?branch=master)](https://travis-ci.org/NYULibraries/primo-explore-search-bar-sub-menu)
 [![npm version](https://img.shields.io/npm/v/primo-explore-search-bar-sub-menu.svg)](https://www.npmjs.com/package/primo-explore-search-bar-sub-menu)
+[![Coverage Status](https://coveralls.io/repos/github/NYULibraries/primo-explore-search-bar-sub-menu/badge.svg?branch=master)](https://coveralls.io/github/NYULibraries/primo-explore-search-bar-sub-menu?branch=master)
 
 ## Description
 

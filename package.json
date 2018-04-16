@@ -40,9 +40,7 @@
   "scripts": {
     "test": "karma start --single-run",
     "test:chrome-debugger": "karma start --browsers=Chrome --single-run=false --debug",
-    "copy-css": "cp -r src/css/ dist/css/",
-    "babelify": "yarn babel src --out-dir dist --ignore *.spec.js,coverage",
-    "build": "yarn babelify; yarn copy-css",
-    "prepare": "BABEL_ENV=production yarn build"
+    "build": "BABEL_ENV=production yarn babel src --out-dir dist --ignore *.spec.js,coverage",
+    "prepare": "yarn build"
   }
 }

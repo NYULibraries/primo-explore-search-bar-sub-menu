@@ -1,5 +1,4 @@
 src/
-.babelrc
-.eslintrc
-.travis.yml
+.*
 karma.conf.js
+yarn-error.log

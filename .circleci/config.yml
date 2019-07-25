@@ -1,0 +1,72 @@
+
+docker-defaults: &docker-defaults
+  docker:
+    - image: quay.io/nyulibraries/circleci_docker:18.06.3-dc-1.23.2-0
+  working_directory: ~/app
+
+version: 2
+jobs:
+  run-unit-tests:
+    <<: *docker-defaults
+    steps:
+    - checkout
+    - setup_remote_docker
+    - run:
+        name: Run unit tests
+        command: |
+          docker-compose run test
+  build-and-pack:
+    <<: *docker-defaults
+    steps:
+    - checkout
+    - setup_remote_docker
+    - run:
+        name: Builds package in Docker container and copies out
+        command: |
+          docker-compose run pack
+          mkdir -p ./output
+          docker cp "$(docker ps -q -a -l -f name=pack)":/app/primo-explore-search-bar-sub-menu.tgz ./output/
+    - store_artifacts:
+        path: output
+  publish-to-npm:
+    docker:
+    - image: circleci/node:lts
+    working_directory: ~/app
+    steps:
+    - checkout
+    - run:
+        name: Authenticate with NPM
+        command: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/app/.npmrc
+    - run:
+        name: Install dependencies
+        command: |
+          yarn install --frozen-lockfile --ignore-optional
+    - run:
+        name: Publish package
+        command: |
+          yarn publish
+workflows:
+  version: 2
+  test-and-build:
+    jobs:
+    - run-unit-tests
+    - build-and-pack:
+        requires:
+        - run-unit-tests
+  test-and-deploy:
+    jobs:
+    - run-unit-tests:
+        filters:
+          tags:
+            only: /.*/
+          branches:
+            ignore: /.*/
+    - publish-to-npm:
+        requires:
+          - run-unit-tests
+        filters:
+          tags:
+            only: /^v.*/
+          branches:
+            ignore: /.*/

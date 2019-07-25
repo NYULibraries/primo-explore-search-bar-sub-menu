@@ -1,4 +1,4 @@
-const searchBarSubMenuItems = __fixtures__['searchBarSubMenuItems'];
+import searchBarSubMenuItems from './fixtures/searchBarSubMenuItems';
 
 describe('searchBarSubMenu component', () => {
   beforeEach(module('searchBarSubMenu', ($provide) => {

@@ -5,17 +5,24 @@ const webpackConfig = {
     index: path.resolve(__dirname, 'src/index.js'),
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.html$/,
+        loader: 'raw-loader',
+        exclude: /node_modules/,
+      }
+    ]
   },
   devtool: 'sourcemap',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
-    library: 'primoExploreCustomLogin',
+    library: 'primoExploreCustomSearchBarSubMenu',
     libraryTarget: 'umd',
     libraryExport: 'default',
     // see: https://github.com/webpack/webpack/issues/6522

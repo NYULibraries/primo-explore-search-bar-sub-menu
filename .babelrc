@@ -4,9 +4,6 @@
       "targets": "last 2 versions, not dead"
     }]
   ],
-  "plugins": [
-    "transform-html-import-to-string",
-  ],
   "env": {
     "test": {
       "plugins": [

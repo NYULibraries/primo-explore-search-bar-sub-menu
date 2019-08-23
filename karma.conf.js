@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const webpackConfig = require('./webpack.config');
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function (config) {
@@ -7,7 +8,7 @@ module.exports = function (config) {
     reporters: [
       'spec',
       'junit',
-      'coverage',
+      'coverage-istanbul',
       'coveralls',
     ],
     browsers: ['ChromeHeadless', 'ChromiumHeadless_without_sandbox'],
@@ -25,11 +26,7 @@ module.exports = function (config) {
     webpack: {
       mode: 'development',
       module: {
-        rules: [{
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
-        }]
+        rules: webpackConfig.module.rules,
       },
       devtool: 'inline-source-map',
       externals: {
@@ -50,9 +47,11 @@ module.exports = function (config) {
     junitReporter: {
       outputDir: 'test-results'
     },
-    coverageReporter: {
-      type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
-      dir: 'test-results/coverage',
+    coverageIstanbulReporter: {
+      reports: [
+        'lcov',
+      ],
+      dir: 'test-results/coverage'
     },
   });
 };
